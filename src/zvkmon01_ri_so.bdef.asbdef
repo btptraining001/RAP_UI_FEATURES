@@ -1,0 +1,55 @@
+managed implementation in class zbp_vkmon01_ri_so unique;
+strict ( 2 );
+
+define behavior for ZVKMON01_RI_SO //alias <alias_name>
+persistent table zvkmon01_dt_so
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) Soid;
+  association _Item { create; }
+}
+
+define behavior for ZVKMON01_I_SOIT //alias <alias_name>
+persistent table zvkmon01_dt_soit
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Soid, ItemId;
+  association _Header;
+  association _dlsh { create; }
+  association _Inv { create; }
+}
+
+define behavior for ZVKMON01_I_DLSH //alias <alias_name>
+persistent table zvkmon01_dt_dlsh
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Soid, ItemId, DelvId;
+  association _Header;
+  association _Item;
+}
+
+define behavior for ZVKMON01_I_INV //alias <alias_name>
+persistent table zvkmon01_dt_inv
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Soid, ItemId, InvoiceId;
+  association _Header;
+  association _Item;
+}

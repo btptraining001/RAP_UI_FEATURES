@@ -1,0 +1,9 @@
+@EndUserText.label: 'Service Defination : UI Features App'
+define service ZVKMON01_SD_UIFEATURES_APP {
+  expose ZVKMON01_RC_SO;
+  expose ZVKMON01_C_SOIT;
+  expose ZVKMON01_C_INV;
+  expose ZVKMON01_C_DLSH;
+  expose ZVKMON01_I_CUST;
+  expose ZVKMON01_I_PROD;
+}
